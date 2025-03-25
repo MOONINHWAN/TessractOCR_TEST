@@ -12,7 +12,7 @@ int main()
 
 	//  Tesseract 초기화 확인
 	if (api->Init(NULL, "kor")) {
-		std::cerr << "Tesseract 초기화 실패!" << std::endl;
+		std::cerr << "Tesseract 초기화 실패!!" << std::endl;
 		return -1;
 	}
 
