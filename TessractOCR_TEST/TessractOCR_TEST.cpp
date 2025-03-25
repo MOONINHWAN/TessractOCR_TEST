@@ -10,13 +10,13 @@ int main()
 
 	tesseract::TessBaseAPI* api = new tesseract::TessBaseAPI();
 
-	// ✅ Tesseract 초기화 확인
+	//  Tesseract 초기화 확인
 	if (api->Init(NULL, "kor")) {
 		std::cerr << "Tesseract 초기화 실패!" << std::endl;
 		return -1;
 	}
 
-	// ✅ 이미지 로드 확인 (최대 3회 재시도)
+	//  이미지 로드 확인 (최대 3회 재시도)
 	Pix* image = nullptr;
 	for (int i = 0; i < 3; i++) {
 		//image = pixRead("D:/Project/MFC/TessractOCR_TEST/TessractOCR_TEST/x64/Debug/test.png");
@@ -33,19 +33,19 @@ int main()
 		return -1;
 	}
 
-	// ✅ OCR 수행
+	//  OCR 수행
 	api->SetImage(image);
 	char* outText = api->GetUTF8Text();
 	if (outText) {
 		std::cout << "OCR output:\n" << outText << std::endl;
-		std::cout.flush();  // 🚀 강제 플러시 추가
+		std::cout.flush();  //  강제 플러시 추가
 		delete[] outText;
 	}
 	else {
 		std::cerr << "OCR 실패!" << std::endl;
 	}
 
-	// ✅ 리소스 해제
+	//  리소스 해제
 	api->End();
 	delete api;
 	pixDestroy(&image);
